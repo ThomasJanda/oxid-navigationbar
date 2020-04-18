@@ -1,0 +1,100 @@
+#rs-megamenu-wrapper {
+  div {
+    white-space: nowrap;
+  }
+
+  nav {
+    /* navigation bar itself */
+    height: $nav-height;
+    white-space: nowrap;
+
+    > div {
+      /* root row */
+      float: left;
+      font-size: 0px;
+      > div {
+        /* root item */
+        display: inline-block;
+        font-size: 1rem;
+
+        &.hover
+        {
+          > div {
+            display: flex;
+          }
+        }
+
+        > a {
+          /* root links */
+        }
+
+        > span {
+          /* root description / instead of a link */
+        }
+
+        > div{
+          /* sub column */
+          position: absolute;
+          top: $nav-height;
+          left: 0px;
+          right: 0px;
+          height: auto;
+
+          > div {
+            /* sub item */
+            > a {
+              /* sub link */
+            }
+
+            > span {
+              /* sub title */
+            }
+          }
+        }
+      }
+    }
+  }
+
+
+  > span {
+    /* prev next */
+    position: absolute;
+    width: 15px;
+    top: 0px;
+    bottom: 0px;
+    display: none;
+    padding: 1em 0;
+    text-align: center;
+    cursor: pointer;
+
+    &#rs-megamenu-prev {
+      left: 0px;
+    }
+
+    &#rs-megamenu-next {
+      right: 0px;
+    }
+
+    &#rs-megamenu-menu,
+    &#rs-megamenu-shadow
+    {
+      display:none;
+    }
+  }
+
+  &[data-rs-megamenu-overflowing="both"],
+  &[data-rs-megamenu-overflowing="left"]
+  {
+    > span#rs-megamenu-prev {
+      display: block;
+    }
+
+  }
+  &[data-rs-megamenu-overflowing="both"],
+  &[data-rs-megamenu-overflowing="right"]
+  {
+    > span#rs-megamenu-next {
+      display: block;
+    }
+  }
+}

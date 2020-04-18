@@ -1,0 +1,151 @@
+#rs-megamenu-wrapper {
+  all: revert;
+
+  font-size:1rem;
+  position: relative;
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  z-index:9;
+
+  &.sticky {
+    position: -webkit-sticky; /* for safari */
+    position: sticky;
+    top: 0;
+  }
+
+  div {
+  }
+
+  div, span, li, ul {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  a, span {
+    display: block;
+    box-sizing: border-box;
+    padding: 1rem;
+
+    &:hover {
+    }
+  }
+
+  > span {
+    &#rs-megamenu-prev,
+    &#rs-megamenu-next,
+    &#rs-megamenu-menu,
+    &#rs-megamenu-shadow
+    {
+      cursor:pointer;
+      display:none;
+    }
+    &#rs-megamenu-prev
+    {
+      &:after {
+        content: '\25C0';
+        font-size: 1rem;
+      }
+    }
+    &#rs-megamenu-next
+    {
+      &:after {
+        content: '\25B6';
+        font-size: 1rem;
+      }
+    }
+    &#rs-megamenu-menu
+    {
+      &:before {
+        content: '\2630';
+        font-size: 1rem;
+        padding-right:0.1rem;
+      }
+    }
+
+  }
+
+  nav {
+    /* navigation bar itself */
+    overflow-y: hidden;
+    overflow-x: hidden;
+    -webkit-overflow-scrolling: touch;
+    height: $nav-height;
+    white-space: nowrap;
+    /* font-size: 0; */
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+
+    /* for the selected item */
+    .selected {
+    }
+
+    /* if has subcategories */
+    .hassub {
+      &:after
+      {
+        padding-left:0.1rem;
+        font-size: 1rem;
+        content: '\25BC';
+      }
+    }
+
+    > div {
+      /* root row */
+      transition: transform .2s ease-in-out;
+
+      > span#rs-megamenu-close
+      {
+        display:none;
+        &:after
+        {
+          content: '\1F5D9';
+        }
+
+      }
+
+      &.no-transition {
+        transition: none;
+      }
+
+
+      > div {
+        /* root item */
+
+        &.hover {
+          > div {
+
+          }
+        }
+
+        > a {
+          /* root links */
+        }
+
+        > span {
+          /* root description / instead of a link */
+        }
+
+        > div {
+          /* sub column */
+          display: none;
+          left: 0px;
+          right: 0px;
+          height: auto;
+
+          /* sub item */
+          > a {
+            /* sub link */
+          }
+
+          > span {
+            /* sub title */
+          }
+        }
+      }
+    }
+  }
+}

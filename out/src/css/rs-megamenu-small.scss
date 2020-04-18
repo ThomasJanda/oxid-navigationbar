@@ -1,0 +1,126 @@
+#rs-megamenu-wrapper {
+  div {
+    white-space: normal;
+  }
+
+  nav {
+    /* navigation bar itself */
+    position: fixed;
+    left: 0px;
+    margin-left: calc(-85% - 20px);
+    width: 85%;
+    top: 0px;
+    transition: 0.5s;
+    z-index: 2;
+    height: auto;
+    white-space: normal;
+
+    &.open {
+      display: block;
+      margin-left: 0;
+    }
+
+    > div {
+      /* root row */
+      float: none;
+      max-height: 100vh;
+      overflow-y: auto;
+      position: relative;
+
+      > span#rs-megamenu-close
+      {
+        display: block;
+        position: absolute;
+        right: 20px;
+        width: 20px;
+        height: 20px;
+        top: 10px;
+        line-height: 20px;
+        vertical-align: middle;
+        text-align: center;
+        margin: 0;
+        padding: 0;
+        font-weight: bold;
+        cursor: pointer;
+      }
+
+      > div {
+        /* root item */
+        display: block;
+
+        &.rs-megamenu-item-root-has-sub
+        {
+          > a:after {
+            content: '\25BC';
+            float:right;
+          }
+        }
+        &.open {
+          > div {
+            display: block;
+          }
+          &.rs-megamenu-item-root-has-sub
+          {
+            > a:after {
+              content: '\25B2';
+            }
+          }
+        }
+
+        > div {
+          /* sub column */
+          margin-left: 10px;
+          position: relative;
+          top: auto;
+          left: 0px;
+          right: 0px;
+          height: auto;
+
+
+          /* sub item */
+          > div
+          {
+            > a {
+              /* sub link */
+              float: none;
+            }
+
+            > span {
+              /* sub title */
+              float: none;
+            }
+          }
+        }
+      }
+    }
+  }
+
+
+  > span {
+    &#rs-megamenu-menu {
+      display: block;
+      width: 100%;
+    }
+
+    &#rs-megamenu-shadow {
+      position: fixed;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      top: 0;
+      background: #000;
+      opacity: 0.3;
+      display: none;
+      z-index: 1;
+    }
+
+  }
+}
+
+body.rs-megamenu-small-open {
+  overflow: hidden;
+
+  #rs-megamenu-wrapper > span#rs-megamenu-shadow {
+    display: block;
+  }
+}

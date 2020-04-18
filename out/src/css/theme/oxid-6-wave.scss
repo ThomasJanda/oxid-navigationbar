@@ -1,0 +1,202 @@
+$color0: rgba(255,255,255,0.9);
+$color1: rgba(0,0,0,0.15);
+$color2: rgb(252, 102, 33);
+$color3: rgb(0, 158, 192);
+$color4: #222222;
+$color5: rgb(0,0,0,0.175);
+
+html.rs-megamenu-large {
+
+  #rs-megamenu-wrapper {
+    background:$color0;
+    font-family: Raleway, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: 200;
+
+    div, span, li, ul, nav {
+    }
+
+    a, span {
+      text-decoration: none;
+      &:hover {
+      }
+    }
+
+    > span {
+      &#rs-megamenu-prev,
+      &#rs-megamenu-next,
+      &#rs-megamenu-menu,
+      &#rs-megamenu-shadow {
+        color:$color3;
+        font-weight:bold;
+        background:$color0;
+
+        &:hover
+        {
+          color:$color2;
+        }
+      }
+    }
+
+    nav {
+      /* navigation bar itself */
+
+      .selected {
+        /* for the selected item */
+        color:$color2;
+      }
+      /* if has subcategories */
+      .hassub {
+        &:after
+        {
+        }
+      }
+
+      > div {
+        /* root row */
+
+        > div {
+          /* root item */
+
+          &.hover {
+            > a {
+              /* root links */
+              color:$color2;
+            }
+
+            > span {
+              /* root description / instead of a link */
+              color:$color2;
+            }
+
+            > div {
+              /* sub column */
+              color:$color2;
+            }
+          }
+
+          > a {
+            /* root links */
+            color:$color3;
+          }
+
+          > span {
+            /* root description / instead of a link */
+            color:$color3;
+          }
+
+          > div {
+            /* sub column */
+            border:1px solid $color1;
+            border-radius:0px 0px 4px 4px;
+            box-shadow: 0 6px 12px $color5;
+            background:$color0;
+
+            > div
+            {
+              > a, > span {
+                /* sub link */
+                color: $color4;
+
+                &:hover
+                {
+                  background-color:$color3;
+                  color:$color0;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+html.rs-megamenu-small {
+
+  #rs-megamenu-wrapper {
+    background:$color0;
+    font-family: Raleway, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: 200;
+
+    div, span, li, ul, nav {
+    }
+
+    a, span {
+      text-decoration: none;
+      &:hover {
+      }
+    }
+
+    > span {
+      &#rs-megamenu-prev,
+      &#rs-megamenu-next,
+      &#rs-megamenu-menu,
+      {
+        color:$color3;
+
+        &:hover
+        {
+          color:$color2;
+        }
+      }
+      &#rs-megamenu-shadow
+      {
+        background-color:$color5;
+      }
+    }
+
+    nav {
+      background:$color0;
+      /* navigation bar itself */
+      border-radius:0px 4px 4px 0px;
+      box-shadow: 0 6px 12px $color5;
+
+      .selected {
+        /* for the selected item */
+        color:$color2;
+      }
+
+      > div {
+        /* root row */
+
+        > div {
+          /* root item */
+          border-bottom: 1px solid $color1;
+
+          &.hover {
+            > a, > span, > div {
+              /* sub column */
+              color:$color2;
+            }
+          }
+
+          > a, > span {
+            /* root description / instead of a link */
+            color:$color3;
+            padding:0.8rem;
+            font-size:1.2rem;
+          }
+
+          > div {
+            /* sub column */
+            margin-left:0;
+            margin-bottom:0.1rem;
+
+            > a, > span {
+              /* sub link */
+              color: $color3;
+              border-bottom: 1px solid $color1;
+              padding:0.5rem 0.5rem 0.5rem 2rem;
+              font-size:1rem;
+
+              &:hover
+              {
+                color:$color2;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
