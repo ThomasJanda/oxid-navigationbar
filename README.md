@@ -5,11 +5,11 @@
 Replace existing categorie navigation bar. Main goal is a better usibility for mobile pages and shop which has
 many categories. 
 
-![](shop1.png)
+![](Shop1.png)
 
-![](shop2.png)
+![](Shop2.png)
 
-![](shop3.png)
+![](Shop3.png)
 
 This module is made for Oxid 6 wave theme.
 
