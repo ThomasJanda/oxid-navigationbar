@@ -213,18 +213,24 @@ rs_megamenu_nav_requestAnimationFrame(0);
  * open/close sub menu
  */
 var list = rs_megamenu_row.getElementsByClassName('rs-megamenu-item-root');
-var rs_megamenu_timeout = null;
+var rs_megamenu_should_open=null;
+var rs_megamenu_opened = null;
+var rs_megamenu_timeout_open = null;
+
+var rs_megamenu_should_close = null;
+var rs_megamenu_timeout_close = null;
+
 function rs_megamenu_remove_hover()
 {
-    if(rs_megamenu_timeout!==null)
+    if(rs_megamenu_timeout_close!==null)
     {
-        clearTimeout(rs_megamenu_timeout);
-        rs_megamenu_timeout=null;
+        clearTimeout(rs_megamenu_timeout_close);
+        rs_megamenu_timeout_close=null;
     }
-
-    for(var i = 0; i < list.length; i++) {
-        let self = list[i];
-        self.classList.remove('hover');
+    if(rs_megamenu_opened !== null)
+    {
+        rs_megamenu_opened.classList.remove('hover');
+        rs_megamenu_opened=null;
     }
 }
 
@@ -233,11 +239,42 @@ for(var i = 0; i < list.length; i++) {
     if(typeof self === "object")
     {
         self.addEventListener('mouseover', function() {
-            rs_megamenu_remove_hover();
-            this.classList.add('hover');
+            rs_megamenu_should_open = this;
+
+            if(rs_megamenu_timeout_open!==null)
+            {
+                clearTimeout(rs_megamenu_timeout_open);
+                rs_megamenu_timeout_open=null;
+            }
+            if(rs_megamenu_timeout_close!==null)
+            {
+                clearTimeout(rs_megamenu_timeout_close);
+                rs_megamenu_timeout_close=null;
+            }
+
+            rs_megamenu_timeout_open = setTimeout(function() {
+                if(rs_megamenu_opened !== null)
+                {
+                    rs_megamenu_opened.classList.remove('hover');
+                }
+                rs_megamenu_opened = rs_megamenu_should_open;
+                rs_megamenu_should_open.classList.add('hover');
+                rs_megamenu_should_open=null;
+            }, 200);
         });
         self.addEventListener('mouseout', function() {
-            rs_megamenu_timeout = setTimeout(function(){ rs_megamenu_remove_hover(); }, 2000);
+
+            rs_megamenu_should_open = null;
+            if(rs_megamenu_timeout_open!==null)
+            {
+                clearTimeout(rs_megamenu_timeout_open);
+                rs_megamenu_timeout_open=null;
+            }
+
+            rs_megamenu_should_close = this;
+            rs_megamenu_timeout_close = setTimeout(function(){
+                rs_megamenu_remove_hover();
+            }, 1500);
         });
         self.addEventListener('click', function(event) {
 
@@ -266,9 +303,13 @@ for(var i = 0; i < list.length; i++) {
             if(bContinue)
             {
                 if(this.classList.contains('open'))
+                {
                     this.classList.remove('open');
+                }
                 else
+                {
                     this.classList.add('open');
+                }
             }
         });
     }
