@@ -16,5 +16,6 @@ $aLang = array(
     'SHOP_MODULE_rs-navigationbar_main__standard_sub_column_count_medium_4' => '4',
     'SHOP_MODULE_rs-navigationbar_main__standard_sub_column_count_medium_6' => '6',
     'SHOP_MODULE_rs-navigationbar_main__theme' => 'Which theme should load (Standard: oxid-6-wave)',
+    'SHOP_MODULE_rs-navigationbar_main__display_snippet_id_in_the_shop' => 'Display CMS-Ident for snippets in the navigation bar',
 );
 

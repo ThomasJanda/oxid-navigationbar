@@ -52,14 +52,38 @@
                             [{* display subcats *}]
                             [{if $ocat->rs_navigationbar_hasSubCount()}]
                                 <div class="rs-megamenu-row-sub row">
-                                    [{assign var=aSubCatsCols value=$ocat->rs_navigationbar_getSubColumns()}]
-                                    [{foreach from=$aSubCatsCols item=aSubCats}]
-                                        <div class="rs-megamenu-col-sub col-sm-12 col-md-[{$ocat->rs_navigationbar_columnWidthMedium()}] col-lg-[{$ocat->rs_navigationbar_columnWidthLarge()}]">
-                                            [{foreach from=$aSubCats item=link}]
-                                                [{$link}]
+                                    [{assign var=bDisplaySnippet value=false}]
+                                    [{assign var=sSnippetId value=$ocat->getId()}]
+                                    [{assign var=sSnippetId value="rs-megamenu-snippet-"|cat:$sSnippetId}]
+                                    [{assign var=sSnippetId value=$sSnippetId|md5}]
+                                    [{assign var=sSnippet value=""}]
+                                    [{if $oConfig->getConfigParam('rs-navigationbar_main__display_snippet_id_in_the_shop')}]
+                                        [{assign var=bDisplaySnippet value=true}]
+                                    [{/if}]
+                                    [{oxifcontent ident=$sSnippetId object="oCont"}]
+                                        [{assign var=bDisplaySnippet value=true}]
+                                        [{assign var=sSnippet value=$oCont->oxcontents__oxcontent->value}]
+                                    [{/oxifcontent}]
+                                    <div class="col rs-megamenu-row-sub-categories">
+                                        <div class="row">
+                                            [{assign var=aSubCatsCols value=$ocat->rs_navigationbar_getSubColumns()}]
+                                            [{foreach from=$aSubCatsCols item=aSubCats}]
+                                                <div class="rs-megamenu-col-sub col-sm-12 col-md-[{$ocat->rs_navigationbar_columnWidthMedium()}] col-lg-[{$ocat->rs_navigationbar_columnWidthLarge()}]">
+                                                    [{foreach from=$aSubCats item=link}]
+                                                        [{$link}]
+                                                    [{/foreach}]
+                                                </div>
                                             [{/foreach}]
                                         </div>
-                                    [{/foreach}]
+                                    </div>
+                                    [{if $bDisplaySnippet}]
+                                        <div class="col-sm-2 d-none d-lg-block rs-megamenu-row-sub-snippet">
+                                            [{if $oConfig->getConfigParam('rs-navigationbar_main__display_snippet_id_in_the_shop')}]
+                                                <div style="font-size:10px; ">CMS-IDENT:<br>[{$sSnippetId}]</div>
+                                            [{/if}]
+                                            [{$sSnippet}]
+                                        </div>
+                                    [{/if}]
                                 </div>
                             [{/if}]
                         </div>

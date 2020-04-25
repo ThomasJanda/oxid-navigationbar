@@ -58,5 +58,11 @@ $aModule = array(
             'type' => 'str',
             'value' => 'oxid-6-wave',
         ),
+        array(
+            'group' => 'rs-navigationbar_main',
+            'name' => 'rs-navigationbar_main__display_snippet_id_in_the_shop',
+            'type' => 'bool',
+            'value' => false,
+        ),
     )
 );

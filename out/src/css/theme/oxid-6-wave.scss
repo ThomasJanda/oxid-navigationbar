@@ -84,25 +84,34 @@ html.rs-megamenu-large {
             color:$color3;
           }
 
-          > div {
+          > div.rs-megamenu-row-sub {
             /* sub column */
             border:1px solid $color1;
             border-radius:0px 0px 4px 4px;
             box-shadow: 0 6px 12px $color5;
             background:$color0;
 
-            > div
+            > div.rs-megamenu-row-sub-categories
             {
-              > a, > span {
-                /* sub link */
-                color: $color4;
-
-                &:hover
+                
+                div
                 {
-                  background-color:$color3;
-                  color:$color0;
+                    a, span 
+                    {
+                        /* sub link */
+                        color: $color4;
+
+                        &:hover
+                        {
+                          background-color:$color3;
+                          color:$color0;
+                        }
+                    }
                 }
-              }
+            }
+            > div.rs-megamenu-row-sub-snippet
+            {
+                /* snippet */
             }
           }
         }

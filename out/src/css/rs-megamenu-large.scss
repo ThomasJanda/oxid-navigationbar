@@ -12,6 +12,9 @@
       /* root row */
       float: left;
       font-size: 0px;
+      padding-left:30px;
+      padding-right:30px;
+        
       > div {
         /* root item */
         display: inline-block;
@@ -79,6 +82,18 @@
     &#rs-megamenu-shadow
     {
       display:none;
+    }
+    
+    &#rs-megamenu-prev,
+    &#rs-megamenu-next
+    {
+      width:30px;
+      &:after
+      {
+        display: inherit;
+        margin-top: -2px;
+        font-size: 0.8em;
+      }
     }
   }
 
