@@ -21,6 +21,13 @@ Each theme has it´s own "scss" file and you can add your own and link to that i
 
     Modules Folder/out/src/css/theme
 
+The navigation bar can display CMS text directly with the menu (only large). To display the CMS-Ident you need, you can enable 
+the "Display CMS-Ident for snippets in the navigation bar" to see the CMS-Ident in the shop itself. The CMS-Ident is different 
+for each sub menu. Disable this option if you copy and past the CMS-Ident to keep the navigation bar nice for the users.
+
+On touch devices, the root categorie can't click directly if a sub menu is present. Instead opening the categorie, it display/hide
+the sub menu on touch.
+
 ## Install
 
 1. Copy files into following directory
