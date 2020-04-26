@@ -19,7 +19,7 @@
   },
   "autoload": {
     "psr-4": {
-      "rs\\masterpassword\\": "../../../source/modules/rs/navigationbar"
+      "rs\\navigationbar\\": "../../../source/modules/rs/navigationbar"
     }
   }
 }
