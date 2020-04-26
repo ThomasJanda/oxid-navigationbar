@@ -23,6 +23,23 @@ rs_megamenu_wrapper.setAttribute("data-rs-megamenu-overflowing", rs_megamenu_det
 
 
 
+function rs_megamenu_is_touch_device() {
+    
+    var prefixes = ' -webkit- -moz- -o- -ms- '.split(' ');
+    
+    var mq = function (query) {
+        return window.matchMedia(query).matches;
+    }
+
+    if (('ontouchstart' in window) || window.DocumentTouch && document instanceof DocumentTouch) {
+        return true;
+    }
+
+    // include the 'heartz' as a way to have a non matching MQ to help terminate the join
+    // https://git.io/vznFH
+    var query = ['(', prefixes.join('touch-enabled),('), 'heartz', ')'].join('');
+    return mq(query);
+}
 
 
 
@@ -233,53 +250,61 @@ function rs_megamenu_remove_hover()
         rs_megamenu_opened=null;
     }
 }
+function rs_megamenu_add_hover()
+{
+    if(rs_megamenu_opened !== null)
+    {
+        rs_megamenu_opened.classList.remove('hover');
+    }
+    rs_megamenu_opened = rs_megamenu_should_open;
+    rs_megamenu_should_open.classList.add('hover');
+    rs_megamenu_should_open=null;
+}
 
 for(var i = 0; i < list.length; i++) {
     let self = list[i];
     if(typeof self === "object")
     {
-        self.addEventListener('mouseover', function() {
-            rs_megamenu_should_open = this;
+        if(!rs_megamenu_is_touch_device())
+        {
+            self.addEventListener('mouseover', function() {
+                rs_megamenu_should_open = this;
 
-            if(rs_megamenu_timeout_open!==null)
-            {
-                clearTimeout(rs_megamenu_timeout_open);
-                rs_megamenu_timeout_open=null;
-            }
-            if(rs_megamenu_timeout_close!==null)
-            {
-                clearTimeout(rs_megamenu_timeout_close);
-                rs_megamenu_timeout_close=null;
-            }
-
-            rs_megamenu_timeout_open = setTimeout(function() {
-                if(rs_megamenu_opened !== null)
+                if(rs_megamenu_timeout_open!==null)
                 {
-                    rs_megamenu_opened.classList.remove('hover');
+                    clearTimeout(rs_megamenu_timeout_open);
+                    rs_megamenu_timeout_open=null;
                 }
-                rs_megamenu_opened = rs_megamenu_should_open;
-                rs_megamenu_should_open.classList.add('hover');
-                rs_megamenu_should_open=null;
-            }, 200);
-        });
-        self.addEventListener('mouseout', function() {
+                if(rs_megamenu_timeout_close!==null)
+                {
+                    clearTimeout(rs_megamenu_timeout_close);
+                    rs_megamenu_timeout_close=null;
+                }
 
-            rs_megamenu_should_open = null;
-            if(rs_megamenu_timeout_open!==null)
-            {
-                clearTimeout(rs_megamenu_timeout_open);
-                rs_megamenu_timeout_open=null;
-            }
+                rs_megamenu_timeout_open = setTimeout(function() {
+                    rs_megamenu_add_hover();
+                }, 200);
+            });
+            self.addEventListener('mouseout', function() {
 
-            rs_megamenu_should_close = this;
-            rs_megamenu_timeout_close = setTimeout(function(){
-                rs_megamenu_remove_hover();
-            }, 1500);
-        });
+                rs_megamenu_should_open = null;
+                if(rs_megamenu_timeout_open!==null)
+                {
+                    clearTimeout(rs_megamenu_timeout_open);
+                    rs_megamenu_timeout_open=null;
+                }
+
+                rs_megamenu_should_close = this;
+                rs_megamenu_timeout_close = setTimeout(function(){
+                    rs_megamenu_remove_hover();
+                }, 1500);
+            });
+        }
+        
         self.addEventListener('click', function(event) {
 
             let bContinue = true;
-            if(rs_megamenu_settings.navBarSize==='small')
+            if(rs_megamenu_settings.navBarSize==='small' || rs_megamenu_is_touch_device())
             {
                 bContinue=false;
                 if(this.classList.contains('rs-megamenu-item-root-has-sub'))
@@ -302,13 +327,28 @@ for(var i = 0; i < list.length; i++) {
             }
             if(bContinue)
             {
-                if(this.classList.contains('open'))
+                if(rs_megamenu_settings.navBarSize==='small')
                 {
-                    this.classList.remove('open');
+                    if(this.classList.contains('open'))
+                    {
+                        this.classList.remove('open');
+                    }
+                    else
+                    {
+                        this.classList.add('open');
+                    }
                 }
-                else
+                else if(rs_megamenu_is_touch_device())
                 {
-                    this.classList.add('open');
+                    if(this.classList.contains('hover'))
+                    {
+                        rs_megamenu_remove_hover();
+                    }
+                    else
+                    {
+                        rs_megamenu_should_open=this;
+                        rs_megamenu_add_hover();
+                    }                   
                 }
             }
         });
