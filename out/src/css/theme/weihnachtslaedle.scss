@@ -111,7 +111,7 @@ html.rs-megamenu-large {
 
             > div
             {
-              > a, > span {
+              a, span {
                 /* sub link */
                 color: $color4;
 
@@ -207,7 +207,7 @@ html.rs-megamenu-small {
 
             > div
             {
-              > a, > span {
+              a, span {
                 /* sub link */
                 color: $color3;
                 border-bottom: 1px solid $color1;
