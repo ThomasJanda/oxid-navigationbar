@@ -16,213 +16,213 @@ $color5: rgb(0,0,0,0.175);
 
 html.rs-megamenu-large {
 
-  #rs-megamenu-wrapper {
-    background:$color0;
-    font-family: Raleway, "Helvetica Neue", Helvetica, Arial, sans-serif;
-    font-weight:normal;
-
-    div, span, li, ul, nav {
-    }
-
-    a, span {
-      text-decoration: none;
-      &:hover {
-      }
-    }
-
-    > span {
-      &#rs-megamenu-prev,
-      &#rs-megamenu-next,
-      &#rs-megamenu-menu,
-      &#rs-megamenu-shadow {
-        color:$color3;
-        font-weight:bold;
+    #rs-megamenu-wrapper {
         background:$color0;
-        &:hover
-        {
-          color:$color2;
+        font-family: Raleway, "Helvetica Neue", Helvetica, Arial, sans-serif;
+        font-weight:normal;
+
+        div, span, li, ul, nav {
         }
-      }
 
-      &#rs-megamenu-prev,
-      &#rs-megamenu-next
-      {
-        width:30px;
-        &:after
-        {
-          display: inherit;
-          margin-top: -2px;
-          font-size: 0.8em;
+        a, span {
+            text-decoration: none;
+            &:hover {
+            }
         }
-      }
-    }
 
-    nav {
-      /* navigation bar itself */
-
-      .selected {
-        /* for the selected item */
-        color:$color2;
-      }
-      /* if has subcategories */
-      .hassub {
-        &:after
-        {
-        }
-      }
-
-      > div {
-        /* root row */
-        padding-left:30px;
-        padding-right:30px;
-
-        > div {
-          /* root item */
-
-          &.hover {
-            > a {
-              /* root links */
-              color:$color2;
+        > span {
+            &#rs-megamenu-prev,
+            &#rs-megamenu-next,
+            &#rs-megamenu-menu,
+            &#rs-megamenu-shadow {
+                color:$color3;
+                font-weight:bold;
+                background:$color0;
+                &:hover
+                    {
+                    color:$color2;
+                }
             }
 
-            > span {
-              /* root description / instead of a link */
-              color:$color2;
+            &#rs-megamenu-prev,
+            &#rs-megamenu-next
+            {
+                width:30px;
+                &:after
+                    {
+                    display: inherit;
+                    margin-top: -2px;
+                    font-size: 0.8em;
+                }
+            }
+        }
+
+        nav {
+            /* navigation bar itself */
+
+            .selected {
+                /* for the selected item */
+                color:$color2;
+            }
+            /* if has subcategories */
+            .hassub {
+                &:after
+                    {
+                }
             }
 
             > div {
-              /* sub column */
-              color:$color2;
-            }
-          }
+                /* root row */
+                padding-left:30px;
+                padding-right:30px;
 
-          > a, > span {
-            /* root description / instead of a link */
-            color:$color3;
-            padding:0.75em;
-          }
+                > div {
+                    /* root item */
 
-          > div {
-            /* sub column */
-            border:1px solid $color1;
-            border-radius:0px 0px 4px 4px;
-            box-shadow: 0 6px 12px $color5;
-            background:$color0a;
+                    &.hover {
+                        > a {
+                            /* root links */
+                            color:$color2;
+                        }
 
-            > div
-            {
-              a, span {
-                /* sub link */
-                color: $color4;
+                        > span {
+                            /* root description / instead of a link */
+                            color:$color2;
+                        }
 
-                &:hover
-                {
-                  background-color:$color3;
-                  color:$color0;
+                        > div {
+                            /* sub column */
+                            color:$color2;
+                        }
+                    }
+
+                    > a, > span {
+                        /* root description / instead of a link */
+                        color:$color3;
+                        padding:0.75em;
+                    }
+
+                    > div {
+                        /* sub column */
+                        border:1px solid $color1;
+                        border-radius:0px 0px 4px 4px;
+                        box-shadow: 0 6px 12px $color5;
+                        background:$color0a;
+
+                        > div
+                        {
+                            a, span {
+                                /* sub link */
+                                color: $color4;
+
+                                &:hover
+                                    {
+                                    background-color:$color3;
+                                    color:$color0;
+                                }
+                            }
+                        }
+                    }
                 }
-              }
             }
-          }
         }
-      }
     }
-  }
 }
 
 html.rs-megamenu-small {
 
-  #rs-megamenu-wrapper {
-    background:$color0;
-    font-family: Raleway, "Helvetica Neue", Helvetica, Arial, sans-serif;
-    font-weight: normal;
+    #rs-megamenu-wrapper {
+        background:$color0;
+        font-family: Raleway, "Helvetica Neue", Helvetica, Arial, sans-serif;
+        font-weight: normal;
 
-    div, span, li, ul, nav {
-    }
-
-    a, span {
-      text-decoration: none;
-      &:hover {
-      }
-    }
-
-    > span {
-      &#rs-megamenu-prev,
-      &#rs-megamenu-next,
-      &#rs-megamenu-menu,
-      {
-        color:$color3;
-
-        &:hover
-        {
-          color:$color2;
-        }
-      }
-      &#rs-megamenu-shadow
-      {
-        background-color:$color5;
-      }
-    }
-
-    nav {
-      background:$color0;
-      /* navigation bar itself */
-      border-radius:0px 0px 4px 0px;
-      box-shadow: 0 6px 12px $color5;
-
-      .selected {
-        /* for the selected item */
-        color:$color2;
-      }
-
-      > div {
-        /* root row */
-
-        #rs-megamenu-close
-        {
-          color:$color3;
+        div, span, li, ul, nav {
         }
 
-        > div {
-          /* root item */
-          border-bottom: 1px solid $color1;
-
-          &.hover {
-            > a, > span, > div {
-              /* root highlight column */
-              color:$color2;
+        a, span {
+            text-decoration: none;
+            &:hover {
             }
-          }
+        }
 
-          > a, > span {
-            /* root description / instead of a link */
-            color:$color3;
-            padding:0.8rem;
-            font-size:1.2rem;
-          }
-
-          > div {
-            /* sub column */
-            margin-left:0;
-            margin-bottom:0.1rem;
-
-            > div
+        > span {
+            &#rs-megamenu-prev,
+            &#rs-megamenu-next,
+            &#rs-megamenu-menu,
             {
-              a, span {
-                /* sub link */
-                color: $color3;
-                border-bottom: 1px solid $color1;
-                padding:0.5rem 0.5rem 0.5rem 2rem;
-                font-size:1rem;
+                color:$color3;
 
                 &:hover
-                {
-                  color:$color2;
+                    {
+                    color:$color2;
                 }
-              }
             }
-          }
+            &#rs-megamenu-shadow
+            {
+                background-color:$color5;
+            }
         }
-      }
+
+        nav {
+            background:$color0;
+            /* navigation bar itself */
+            border-radius:0px 0px 4px 0px;
+            box-shadow: 0 6px 12px $color5;
+
+            .selected {
+                /* for the selected item */
+                color:$color2;
+            }
+
+            > div {
+                /* root row */
+
+                #rs-megamenu-close
+                {
+                    color:$color3;
+                }
+
+                > div {
+                    /* root item */
+                    border-bottom: 1px solid $color1;
+
+                    &.hover {
+                        > a, > span, > div {
+                            /* root highlight column */
+                            color:$color2;
+                        }
+                    }
+
+                    > a, > span {
+                        /* root description / instead of a link */
+                        color:$color3;
+                        padding:0.8rem;
+                        font-size:1.2rem;
+                    }
+
+                    > div {
+                        /* sub column */
+                        margin-left:0;
+                        margin-bottom:0.1rem;
+
+                        > div
+                        {
+                            a, span {
+                                /* sub link */
+                                color: $color3;
+                                border-bottom: 1px solid $color1;
+                                padding:0.5rem 0.5rem 0.5rem 2rem;
+                                font-size:1rem;
+
+                                &:hover
+                                    {
+                                    color:$color2;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
     }
-  }
 }
